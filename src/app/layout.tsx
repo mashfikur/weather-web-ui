@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Rubik } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/shared/Navbar";
+import AppWrapper from "@/components/common/AppWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-primary",
   subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sora = Rubik({
+  variable: "--font-secondary",
   subsets: ["latin"],
 });
 
@@ -29,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head></head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={` ${manrope.variable} ${sora.variable} antialiased`}>
+        <AppWrapper>
+          <Navbar />
+
+          <main>{children}</main>
+        </AppWrapper>
       </body>
     </html>
   );
