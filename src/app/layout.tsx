@@ -3,6 +3,7 @@ import { Manrope, Rubik } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/shared/Navbar";
 import AppWrapper from "@/components/common/AppWrapper";
+import ReduxWrapper from "@/components/common/ReduxWrapper";
 
 const manrope = Manrope({
   variable: "--font-primary",
@@ -28,14 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head></head>
       <body className={` ${manrope.variable} ${sora.variable} antialiased`}>
-        <AppWrapper>
-          <Navbar />
+        <ReduxWrapper>
+          <AppWrapper>
+            <Navbar />
 
-          <main>{children}</main>
-        </AppWrapper>
+            <main>{children}</main>
+          </AppWrapper>
+        </ReduxWrapper>
       </body>
     </html>
   );

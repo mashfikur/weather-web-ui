@@ -1,4 +1,5 @@
 import logo from "@/assets/main-logo.png";
+import CurrentLocation from "@/components/nav/CurrentLocation";
 import SearchLocation from "@/components/nav/SearchLocation";
 import ToggleTheme from "@/components/nav/ToggleTheme";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <nav className="container flex items-center justify-between py-8">
-      <div>
+      <div className="flex items-center gap-10">
         <div className="flex items-center gap-2">
           <Image
             src={logo}
@@ -15,13 +16,13 @@ const Navbar = () => {
             quality={100}
             alt="nav-logo"
           />
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h1 className="text-2xl font-medium tracking-tight text-black dark:text-white">
             Forecasta
           </h1>
         </div>
 
         {/* location meter */}
-        <div></div>
+        <CurrentLocation />
       </div>
 
       {/* search bar */}

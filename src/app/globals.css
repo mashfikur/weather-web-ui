@@ -86,6 +86,29 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --custom-bg:
+    radial-gradient(
+      ellipse 110% 70% at 25% 80%,
+      rgba(147, 51, 234, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 130% 60% at 75% 15%,
+      rgba(59, 130, 246, 0.1),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 80% 90% at 20% 30%,
+      rgba(236, 72, 153, 0.14),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 100% 40% at 60% 70%,
+      rgba(16, 185, 129, 0.08),
+      transparent 45%
+    ),
+    #000000;
 }
 
 .dark {
@@ -133,26 +156,15 @@
 
 /* custom styles */
 .custom_bg {
-  background:
-    radial-gradient(
-      ellipse 110% 70% at 25% 80%,
-      rgba(147, 51, 234, 0.12),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 130% 60% at 75% 15%,
-      rgba(59, 130, 246, 0.1),
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 80% 90% at 20% 30%,
-      rgba(236, 72, 153, 0.14),
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 100% 40% at 60% 70%,
-      rgba(16, 185, 129, 0.08),
-      transparent 45%
-    ),
-    #000000;
+  background-color: transparent;
+  transition: 0.4s ease-in-out;
+}
+
+.custom_bg.active {
+  background: var(--custom-bg);
+  transition: 0.4s ease-in-out;
+}
+
+.search_location_group:has(input:focus-visible) {
+  box-shadow: none;
 }
