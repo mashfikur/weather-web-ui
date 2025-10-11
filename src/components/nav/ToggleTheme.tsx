@@ -7,16 +7,11 @@ import {
   useModeAnimation,
 } from "react-theme-switch-animation";
 import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
 import { useAppDispatch } from "@/redux/hooks";
-import { setSiteTheme } from "@/redux/slices/siteSettingsSlice";
+import { toggleTheme } from "@/redux/slices/siteSettingsSlice";
 
 const ToggleTheme = () => {
-  const { theme, toggleTheme } = useTheme();
-
   const dispatch = useAppDispatch();
-
-  console.log(theme);
 
   const { ref, toggleSwitchTheme } = useModeAnimation({
     animationType: ThemeAnimationType.CIRCLE,
@@ -26,19 +21,13 @@ const ToggleTheme = () => {
   const onToggle = () => {
     toggleSwitchTheme();
     setToggle(!isToggled);
-    toggleTheme();
     setTimeout(() => {
-      dispatch(
-        setSiteTheme(
-          theme === "light" ? "dark" : theme === "dark" ? "light" : "",
-        ),
-      );
+      dispatch(toggleTheme());
     }, 200);
   };
 
   return (
     <div>
-      
       <div
         onClick={onToggle}
         className="relative flex size-11 cursor-pointer items-center justify-center overflow-hidden rounded-3xl bg-transparent text-3xl dark:bg-transparent dark:text-white"

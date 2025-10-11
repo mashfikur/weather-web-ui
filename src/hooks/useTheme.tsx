@@ -13,6 +13,7 @@ export function useTheme() {
     if (storedTheme) {
       setTheme(storedTheme);
       document.documentElement.classList.toggle("dark", storedTheme === "dark");
+         console.log('entered storage')
     } else {
       // Optional: Detect system preference
       const prefersDark = window.matchMedia(
@@ -21,6 +22,8 @@ export function useTheme() {
       const defaultTheme: Theme = prefersDark ? "dark" : "light";
       setTheme(defaultTheme);
       document.documentElement.classList.toggle("dark", prefersDark);
+
+      console.log('entered windows')
     }
   }, []);
 
