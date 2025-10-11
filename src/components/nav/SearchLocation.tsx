@@ -6,8 +6,8 @@ import {
 } from "@/components/ui/input-group";
 const SearchLocation = () => {
   return (
-    <div className="w-[50%]">
-      <InputGroup className="search_location_group w-full rounded-3xl border-none bg-[#1e1e1c] px-5 py-6">
+    <div className="w-[45%]">
+      <InputGroup className="search_location_group w-full rounded-3xl px-5 py-6 dark:border-transparent dark:bg-[#1e1e1c]">
         <InputGroupInput placeholder="Search City" className="text-xl" />
         <InputGroupAddon>
           <LuSearch />

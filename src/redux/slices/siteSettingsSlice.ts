@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+"use client";
 
-const defaultTheme = localStorage.getItem("theme");
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const siteSettingsSlice = createSlice({
   name: "siteSettingsSlice",
   initialState: {
-    theme: defaultTheme || "dark",
+    theme: "dark",
   },
   reducers: {
     setSiteTheme: (state, action: PayloadAction<string>) => {

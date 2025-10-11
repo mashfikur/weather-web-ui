@@ -15,6 +15,7 @@
     "@theme-toggles/react": "^4.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.18",
     "lucide-react": "^0.545.0",
     "next": "15.5.4",
     "react": "19.1.0",
@@ -22,6 +23,7 @@
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
     "react-theme-switch-animation": "^1.0.0",
+    "redux-persist": "^6.0.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
@@ -30,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/redux-persist": "^4.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "prettier": "^3.6.2",

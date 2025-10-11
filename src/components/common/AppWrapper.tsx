@@ -8,7 +8,7 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Provider store={store}>
-      <div className="relative min-h-screen w-full text-black dark:text-white">
+      <div className="text-textPrimary dark:text-textPrimary relative min-h-screen w-full">
         <div
           className={`custom_bg ${theme === "dark" ? `active` : ``} absolute inset-0 z-[2]`}
         />

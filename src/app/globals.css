@@ -6,6 +6,9 @@
 @theme {
   --font-primary: var(--font-primary);
   --font-secondary: var(--font-secondary);
+
+  --color-textPrimary: #1e1e1e;
+  --color-hightlight: #ffff00;
 }
 
 @utility container {
@@ -143,6 +146,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --color-textPrimary: #fff;
 }
 
 @layer base {

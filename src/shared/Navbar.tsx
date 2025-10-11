@@ -1,5 +1,6 @@
 import logo from "@/assets/main-logo.png";
 import CurrentLocation from "@/components/nav/CurrentLocation";
+import DateTime from "@/components/nav/DateTime";
 import SearchLocation from "@/components/nav/SearchLocation";
 import ToggleTheme from "@/components/nav/ToggleTheme";
 import Image from "next/image";
@@ -29,7 +30,11 @@ const Navbar = () => {
       <SearchLocation />
 
       {/* toggle */}
-      <ToggleTheme />
+      <div className="flex items-center gap-10">
+        <DateTime />
+
+        <ToggleTheme />
+      </div>
     </nav>
   );
 };
