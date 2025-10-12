@@ -3,6 +3,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type TcurrentWeather = {
   temp_c?: number;
   temp_f?: number;
+  condition: {
+    text?: string;
+  };
+  wind_kph?: string;
+  humidity?: string;
 };
 
 type TdefaultState = {
