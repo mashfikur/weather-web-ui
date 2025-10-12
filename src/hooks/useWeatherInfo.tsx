@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setCurrentWeather } from "@/redux/slices/weatherSlice";
+import { setCurrentWeather, setForecast } from "@/redux/slices/weatherSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
@@ -14,14 +14,16 @@ const useWeatherInfo = ({ lat, long }: Props) => {
   const latitude = lat ?? location?.lat;
   const longitude = long ?? location?.long;
 
-  const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no`;
+  const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+
+  const localSearch = `/forecast.json`;
 
   // fetching weather data
   const { data, isLoading, isError } = useQuery({
     enabled: location?.lat && location.long ? true : false,
     queryKey: ["weather_data"],
     queryFn: async () => {
-      const res = await axios.get(`/data.json`);
+      const res = await axios.get(localSearch);
 
       return res.data;
     },
@@ -36,11 +38,13 @@ const useWeatherInfo = ({ lat, long }: Props) => {
   useEffect(() => {
     if (data) {
       dispatch(setCurrentWeather(data?.current));
+      dispatch(setForecast(data?.forecast?.forecastday));
     }
     // eslint-disable-next-line
   }, [data]);
 
   return {
+    data,
     isLoading,
     isError,
   };

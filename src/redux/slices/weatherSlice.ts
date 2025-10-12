@@ -13,12 +13,26 @@ type TcurrentWeather = {
   feelslike_c?: number;
 };
 
+type Tforecast = {
+  date?: string;
+  day: {
+    maxtemp_c?: number;
+    mintemp_c?: number;
+    condition: {
+      text?: string;
+      icon?:string
+    };
+  };
+};
+
 type TdefaultState = {
   current: TcurrentWeather | null;
+  forecast: Tforecast[] | null;
 };
 
 const defaultState: TdefaultState = {
   current: null,
+  forecast: null,
 };
 
 const weatherSlice = createSlice({
@@ -28,9 +42,12 @@ const weatherSlice = createSlice({
     setCurrentWeather: (state, action: PayloadAction<TcurrentWeather>) => {
       state.current = action.payload;
     },
+    setForecast: (state, action: PayloadAction<Tforecast[]>) => {
+      state.forecast = action.payload;
+    },
   },
 });
 
-export const { setCurrentWeather } = weatherSlice.actions;
+export const { setCurrentWeather, setForecast } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

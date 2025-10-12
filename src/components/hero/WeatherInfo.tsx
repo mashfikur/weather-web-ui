@@ -20,14 +20,12 @@ const WeatherInfo = () => {
     <div className="flex basis-[65%] items-center justify-between gap-10">
       <div className="space-y-20">
         <div className="space-y-8">
-          <div className="relative w-fit">
+          <div className="relative flex w-fit">
             <h3 className="font-secondary text-[150px] leading-[120px] font-extralight">
               {info?.temp_c ? Math.floor(info.temp_c) : "N/A"}
             </h3>
-            <span className="absolute -top-10 -right-5 text-5xl font-thin">
-              °C
-            </span>
-            <span className="absolute -right-10 -bottom-0 text-3xl font-thin">
+            <sup className="text-5xl font-thin">°C</sup>
+            <span className="absolute -right-0 -bottom-0 text-3xl font-thin">
               {info?.isDay ? <IoSunny /> : <FaMoon />}
             </span>
           </div>
@@ -36,14 +34,10 @@ const WeatherInfo = () => {
             <p className="text-[40px] font-thin"> {info?.condition?.text} </p>
             <div className="flex items-center gap-3 text-[20px] font-medium text-gray-400">
               <span>Feels like</span>
-              <div className="relative">
-                <span>
-                  {info?.feelslike_c
-                    ? Math.floor(info.feelslike_c)
-                    : "N/A"}{" "}
-                </span>{" "}
-                <span className="absolute -top-0 -right-5 text-sm">°C</span>
-              </div>
+              <p className="relative">
+                {info?.feelslike_c ? Math.floor(info.feelslike_c) : "N/A"}
+                <sup className="pl-1 text-sm">°C</sup>
+              </p>
             </div>
           </div>
         </div>
