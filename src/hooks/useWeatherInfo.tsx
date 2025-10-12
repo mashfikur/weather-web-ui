@@ -14,18 +14,24 @@ const useWeatherInfo = ({ lat, long }: Props) => {
   const latitude = lat ?? location?.lat;
   const longitude = long ?? location?.long;
 
+  const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no`;
+
   // fetching weather data
   const { data, isLoading, isError } = useQuery({
     enabled: location?.lat && location.long ? true : false,
     queryKey: ["weather_data"],
     queryFn: async () => {
-      const res = await axios.get(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no`,
-      );
+      const res = await axios.get(`/data.json`);
 
       return res.data;
     },
   });
+
+  // useEffect(() => {
+  //   const demoData = fetch(`/data.json`).then((res) => res.json());
+
+  //   console.log(demoData);
+  // }, []);
 
   useEffect(() => {
     if (data) {

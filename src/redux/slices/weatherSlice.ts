@@ -8,6 +8,9 @@ type TcurrentWeather = {
   };
   wind_kph?: string;
   humidity?: string;
+  precip_mm?: string;
+  isDay?: number;
+  feelslike_c?: number;
 };
 
 type TdefaultState = {
