@@ -29,12 +29,6 @@ const useWeatherInfo = ({ lat, long }: Props) => {
     },
   });
 
-  // useEffect(() => {
-  //   const demoData = fetch(`/data.json`).then((res) => res.json());
-
-  //   console.log(demoData);
-  // }, []);
-
   useEffect(() => {
     if (data) {
       dispatch(setCurrentWeather(data?.current));
