@@ -2,12 +2,21 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type TLocation = {
+  lat?: number;
+  long?: number;
+  city?: string;
+  country?: string;
+};
+
 type TdefaultState = {
   theme: string | null;
+  location: TLocation | null;
 };
 
 const defaultState: TdefaultState = {
   theme: null,
+  location: null,
 };
 
 const siteSettingsSlice = createSlice({
@@ -26,9 +35,17 @@ const siteSettingsSlice = createSlice({
 
       state.theme = state.theme === "light" ? "dark" : "light";
     },
+
+    setUserLocation: (state, action: PayloadAction<TLocation>) => {
+      return {
+        ...state,
+        location: action.payload,
+      };
+    },
   },
 });
 
-export const { setSiteTheme,toggleTheme } = siteSettingsSlice.actions;
+export const { setSiteTheme, toggleTheme, setUserLocation } =
+  siteSettingsSlice.actions;
 
 export default siteSettingsSlice.reducer;

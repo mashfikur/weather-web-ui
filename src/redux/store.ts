@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import siteSettingsReducer from "./slices/siteSettingsSlice";
+import weatherReducer from "./slices/weatherSlice";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   site: siteSettingsReducer,
+  weather: weatherReducer,
 });
 
 const upgradedReducer = persistReducer(persistConfig, rootReducer);

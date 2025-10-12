@@ -1,10 +1,10 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setSiteTheme } from "@/redux/slices/siteSettingsSlice";
-import store from "@/redux/store";
 import { useEffect } from "react";
-import { Provider } from "react-redux";
+import useWeatherInfo from "@/hooks/useWeatherInfo";
 
+// Create a client
 const AppWrapper = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useAppSelector((state) => state.site);
   const dispatch = useAppDispatch();
@@ -32,16 +32,16 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <Provider store={store}>
-      <div className="text-textPrimary dark:text-textPrimary relative min-h-screen w-full">
-        <div
-          className={`custom_bg ${theme === "dark" ? `active` : ``} absolute inset-0 z-[2]`}
-        />
+  useWeatherInfo({});
 
-        <div className="relative z-10">{children}</div>
-      </div>
-    </Provider>
+  return (
+    <div className="text-textPrimary dark:text-textPrimary relative min-h-screen w-full">
+      <div
+        className={`custom_bg ${theme === "dark" ? `active` : ``} absolute inset-0 z-[2]`}
+      />
+
+      <div className="relative z-10">{children}</div>
+    </div>
   );
 };
 

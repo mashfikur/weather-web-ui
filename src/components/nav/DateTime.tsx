@@ -26,7 +26,7 @@ const DateTime = () => {
         </p>
       </div>
       <div className={largeDiv}>
-        <p className={largeText}> {realtime.format("HH:mm")} </p>
+        <p className={largeText}> {realtime.format("hh:mm")} </p>
         <p className={divStyle}>
           <span>{realtime.format("A")}</span> <span>Time</span>{" "}
         </p>
