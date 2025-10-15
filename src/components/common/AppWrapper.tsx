@@ -32,7 +32,9 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line
   }, []);
 
-  useWeatherInfo({});
+  const { isLoading } = useWeatherInfo({});
+
+  if (isLoading) return null;
 
   return (
     <div className="text-textPrimary dark:text-textPrimary relative min-h-screen w-full">
