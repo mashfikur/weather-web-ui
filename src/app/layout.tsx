@@ -21,6 +21,36 @@ export const metadata: Metadata = {
   icons: {
     icon: "/fav.png",
   },
+  keywords: [
+    "Forecasta",
+    "weather app",
+    "modern weather website",
+    "real-time weather",
+    "climate insights",
+    "daily forecast",
+    "weather radar",
+    "temperature updates",
+    "Next.js weather site",
+    "local forecast",
+  ],
+  metadataBase: new URL("https://forecasta-web.vercel.app/"),
+  openGraph: {
+    title: "Forecasta | Real-Time Weather Forecasts & Smart Climate Insights",
+    description:
+      "Discover beautiful, accurate weather forecasting with Forecasta. Real-time data, clean UI, and smart climate updates — all in one sleek platform.",
+    url: "https://forecasta.vercel.app",
+    siteName: "Forecasta",
+    images: [
+      {
+        url: "/open-graph.png", // create a nice open graph image later
+        width: 1200,
+        height: 630,
+        alt: "Forecasta - Modern Weather Forecast Platform",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
