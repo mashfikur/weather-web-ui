@@ -17,7 +17,7 @@ const WeatherInfo = () => {
   const smallText = `text-2xl font-medium`;
 
   return (
-    <div className="flex basis-[65%] items-center justify-between gap-10">
+    <div className="flex basis-[60%] items-start justify-between gap-5">
       <div className="space-y-20">
         <div className="space-y-8">
           <div className="relative flex w-fit">
@@ -79,11 +79,11 @@ const WeatherInfo = () => {
         </div>
       </div>
 
-      <div>
+      <div className="flex size-[400px] items-center justify-center rounded-full border bg-transparent">
         <Image
           src={weatherIcon}
-          width={400}
-          height={400}
+          width={350}
+          height={350}
           alt="weather_icon"
           quality={100}
         />

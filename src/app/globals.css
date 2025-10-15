@@ -173,3 +173,11 @@
 .search_location_group:has(input:focus-visible) {
   box-shadow: none;
 }
+
+.main_weather_icon {
+  -webkit-box-shadow: 0px 0px 145px 12px rgba(107, 106, 34, 0.9);
+  -moz-box-shadow: 0px 0px 145px 12px rgba(107, 106, 34, 0.9);
+  box-shadow: 0px 0px 145px 12px rgba(107, 106, 34, 0.9);
+  background: transparent;
+  border-radius: 900px;
+}
