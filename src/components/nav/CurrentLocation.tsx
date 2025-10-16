@@ -14,7 +14,7 @@ const CurrentLocation = () => {
         <p className="flex items-center gap-1">
           <span className="font-semibold"> {location?.name} </span>
           <span>,</span>
-          <span className="opacity-80">Bangladesh</span>
+          <span className="opacity-80">{location?.country}</span>
         </p>
       </div>
     </div>

@@ -16,7 +16,7 @@ const useWeatherInfo = ({ lat, long }: Props) => {
 
   console.log(longitude);
 
-  // const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+  // const searchURL = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
 
   // const localSearch = `/forecast.json`;
 
@@ -25,11 +25,7 @@ const useWeatherInfo = ({ lat, long }: Props) => {
     enabled: latitude && longitude ? true : false,
     queryKey: ["weather_data", latitude, longitude],
     queryFn: async () => {
-      const res = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`,
-      );
-
-      console.log(data);
+      const res = await axios.get(`/forecast.json`);
 
       return res.data;
     },

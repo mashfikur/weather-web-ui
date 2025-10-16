@@ -12,17 +12,14 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { setUserLocation, TLocation } from "@/redux/slices/siteSettingsSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import useWeatherInfo from "@/hooks/useWeatherInfo";
 
 const SearchLocation = () => {
   const navSearchRef = useRef<null | HTMLDivElement>(null);
   const dispatch = useAppDispatch();
 
-  const [customLoc, setCustomLoc] = useState<TLocation | null>(null);
-
-  console.log(customLoc);
-
   const [showSearchResult, setShowSearchResult] = useState(false);
+
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     if (navSearchRef.current) {
@@ -63,29 +60,38 @@ const SearchLocation = () => {
     },
   ];
 
-  // useWeatherInfo({
-  //   lat: customLoc?.latitude,
-  //   long: customLoc?.longitude,
-  // });
-
   const handleSelect = (item: TLocation) => {
-    setCustomLoc(item);
-    console.log("set");
     dispatch(setUserLocation(item));
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim();
+
+    setSearchValue(value);
+
+    if (value.length > 0) {
+      setShowSearchResult(true);
+    } else {
+      setShowSearchResult(false);
+    }
   };
 
   return (
     <div ref={navSearchRef} className="relative z-50 w-[0%]">
       <div className="overflow-hidden">
         <InputGroup className="search_location_group w-full rounded-3xl px-5 py-6 dark:border-transparent dark:bg-[#1e1e1c]">
-          <InputGroupInput placeholder="Search City" className="text-xl" />
+          <InputGroupInput
+            placeholder="Search City"
+            className="text-xl"
+            onChange={handleSearch}
+          />
           <InputGroupAddon>
             <LuSearch />
           </InputGroupAddon>
         </InputGroup>
 
         <div
-          className={`bg absolute top-15 left-0 h-fit min-h-[260px] w-full overflow-hidden rounded-3xl border bg-white shadow-2xl dark:bg-[#1e1e1c]`}
+          className={`bg absolute top-15 left-0 h-fit min-h-[260px] w-full overflow-hidden rounded-3xl border bg-white shadow-2xl dark:bg-[#1e1e1c] ${!showSearchResult ? `invisible opacity-0` : ``}`}
         >
           <div className="divide-y-white divide-y">
             {arr.map((item, index) => (
