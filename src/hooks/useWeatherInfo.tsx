@@ -11,19 +11,25 @@ const useWeatherInfo = ({ lat, long }: Props) => {
   const location = useAppSelector((state) => state.site?.location);
   const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
-  const latitude = lat ?? location?.lat;
-  const longitude = long ?? location?.long;
+  const latitude = lat ?? location?.latitude;
+  const longitude = long ?? location?.longitude;
 
-  const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+  console.log(longitude);
 
-  const localSearch = `/forecast.json`;
+  // const searchURL = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+
+  // const localSearch = `/forecast.json`;
 
   // fetching weather data
-  const { data, isLoading, isError } = useQuery({
-    enabled: location?.lat && location.long ? true : false,
-    queryKey: ["weather_data"],
+  const { data, isLoading, isError, refetch } = useQuery({
+    enabled: latitude && longitude ? true : false,
+    queryKey: ["weather_data", latitude, longitude],
     queryFn: async () => {
-      const res = await axios.get(localSearch);
+      const res = await axios.get(
+        `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no&days=7`,
+      );
+
+      console.log(data);
 
       return res.data;
     },
@@ -41,6 +47,7 @@ const useWeatherInfo = ({ lat, long }: Props) => {
     data,
     isLoading,
     isError,
+    refetch,
   };
 };
 

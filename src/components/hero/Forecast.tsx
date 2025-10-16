@@ -20,7 +20,7 @@ const Forecast = () => {
             forecast.map((item, index) => (
               <div
                 key={index}
-                className={`grid grid-cols-10 px-4 py-3 ${dayjs(item.date).isSame(dayjs(), "day") ? `opacity-40` : ``} `}
+                className={`grid grid-cols-10 px-4 py-3 ${dayjs(item.date).isSame(dayjs(), "day") || dayjs(item.date).isBefore(dayjs(), "day") ? `opacity-40` : ``} `}
               >
                 <div className="col-span-6 flex items-center gap-5">
                   <Image

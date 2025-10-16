@@ -2,10 +2,10 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type TLocation = {
-  lat?: number;
-  long?: number;
-  city?: string;
+export type TLocation = {
+  latitude?: number;
+  longitude?: number;
+  name?: string;
   country?: string;
 };
 
@@ -16,7 +16,12 @@ type TdefaultState = {
 
 const defaultState: TdefaultState = {
   theme: null,
-  location: null,
+  location: {
+    name: "Dhaka",
+    country: "Bangladesh",
+    latitude: 23.728888888,
+    longitude: 90.394444444,
+  },
 };
 
 const siteSettingsSlice = createSlice({

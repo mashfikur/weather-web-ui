@@ -6,9 +6,8 @@ import useWeatherInfo from "@/hooks/useWeatherInfo";
 
 // Create a client
 const AppWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useAppSelector((state) => state.site);
+  const { theme, location } = useAppSelector((state) => state.site);
   const dispatch = useAppDispatch();
-
   // Load from localStorage on mount
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") || null;
@@ -32,9 +31,10 @@ const AppWrapper = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line
   }, []);
 
-  const { isLoading } = useWeatherInfo({});
-
-  if (isLoading) return null;
+  useWeatherInfo({
+    lat: location?.latitude,
+    long: location?.longitude,
+  });
 
   return (
     <div className="text-textPrimary dark:text-textPrimary relative min-h-screen w-full">
