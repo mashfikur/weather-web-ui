@@ -115,7 +115,7 @@ const WeatherInfo = () => {
         </div>
       </div>
 
-      <div className="flex size-[400px] items-center justify-center rounded-full border bg-transparent">
+      <Fade triggerOnce delay={1200} className="flex size-[400px] items-center justify-center rounded-full border bg-transparent">
         <Image
           src={weatherIcon}
           width={350}
@@ -123,7 +123,7 @@ const WeatherInfo = () => {
           alt="weather_icon"
           quality={100}
         />
-      </div>
+      </Fade>
     </div>
   );
 };
