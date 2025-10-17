@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
         hostname: "cdn.weatherapi.com",
       },
     ],
+    qualities: [25, 50, 75, 100],
   },
 };
 

@@ -10,6 +10,8 @@ import { IoSunny } from "react-icons/io5";
 import { FaMoon } from "react-icons/fa";
 
 import { Fade, Slide } from "react-awesome-reveal";
+import AreaInfo from "../secondary/AreaInfo";
+import { getWeatherIcon } from "@/utils/getWeatherIcon";
 const WeatherInfo = () => {
   const info = useAppSelector((state) => state.weather?.current);
 
@@ -113,13 +115,23 @@ const WeatherInfo = () => {
             </Fade>
           </Slide>
         </div>
+
+        <Slide direction="up" triggerOnce delay={400}>
+          <Fade triggerOnce duration={100} delay={400}>
+            <AreaInfo />
+          </Fade>
+        </Slide>
       </div>
 
-      <Fade triggerOnce delay={1200} className="flex size-[400px] items-center justify-center rounded-full border bg-transparent">
+      <Fade
+        triggerOnce
+        delay={1200}
+        className="flex size-[350px] items-center justify-center rounded-full border bg-transparent"
+      >
         <Image
-          src={weatherIcon}
-          width={350}
-          height={350}
+          src={getWeatherIcon(info?.condition.text as string)}
+          width={300}
+          height={300}
           alt="weather_icon"
           quality={100}
         />

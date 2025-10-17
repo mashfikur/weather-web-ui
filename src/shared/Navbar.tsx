@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className="container flex items-center justify-between py-8 opacity-0"
+      className="relative z-[50] container flex items-center justify-between py-8 opacity-0"
     >
       <div className="flex items-center gap-10">
         <div className="flex items-center gap-2">

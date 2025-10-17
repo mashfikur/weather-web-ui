@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Rubik } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/shared/Navbar";
 import AppWrapper from "@/components/common/AppWrapper";
 import ReduxWrapper from "@/components/common/ReduxWrapper";
 
@@ -63,11 +62,7 @@ export default function RootLayout({
       <head></head>
       <body className={` ${manrope.variable} ${sora.variable} antialiased`}>
         <ReduxWrapper>
-          <AppWrapper>
-            <Navbar />
-
-            <main>{children}</main>
-          </AppWrapper>
+          <AppWrapper>{children}</AppWrapper>
         </ReduxWrapper>
       </body>
     </html>
